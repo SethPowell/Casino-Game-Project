@@ -1,4 +1,6 @@
-let wallet=`$${100}`
+let wallet= 100
+
+priceToPlay= 10
 
 rouletteWheel = [
     [0,'green']
@@ -45,3 +47,22 @@ function spinTheWheel() {
     randomNum = (Math.floor(Math.random()*rouletteWheel.length))
     return (rouletteWheel[randomNum])
 }
+
+betOnColor = prompt('What color would you like to bet on?')
+
+function betColor(betOnColor) {
+    if (betOnColor === spinTheWheel()[1]) {
+        wallet += jackpot
+        console.log(`How does it feel to be a winner? Well now you know because the spin came up ${betOnColor}`)
+    } else {
+        wallet -= priceToPlay
+        console.log(`How does it feel to be a loser? The spin unfortuanately was not ${betOnColor}, but you might win back what you lost on the next spin!!!`)
+    }
+}
+
+
+
+
+// make simple betting method for general red or black bet
+// make another simple bettting method to bet on single number results
+// make complex betting method to bet for groups of numbers
