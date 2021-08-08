@@ -50,27 +50,33 @@ function spinTheWheel() {
     return (rouletteWheel[randomNum])
 }
 
-betOnColor = prompt('What color would you like to bet on?')
+bet = prompt('What would you like to bet on?')
 
-function betColor(betOnColor) {
-    if (betOnColor === spinTheWheel()[1]) {
-        wallet += jackpot
-        console.log(`How does it feel to be a winner? Well now you know because the spin came up ${betOnColor}`)
+function betColor(bet) {
+    if (bet === 'red' | 'black') {
+        if (bet === spinTheWheel()[1]) {
+            wallet += jackpot
+            console.log(`How does it feel to be a winner? Well now you know because the spin came up ${bet}`)
+        } else {
+            wallet -= priceToPlay
+            console.log(`How does it feel to be a loser? The spin unfortuanately was not ${bet}, but you might win back what you lost on the next spin!!!`)
+        }
     } else {
-        wallet -= priceToPlay
-        console.log(`How does it feel to be a loser? The spin unfortuanately was not ${betOnColor}, but you might win back what you lost on the next spin!!!`)
+        break;
     }
 }
 
-betOnNumber = prompt('What number would you like to bet on?')
-
-function betNumber(betOnNumber) {
-    if (betOnNumber === spinTheWheel()[0]) {
-        wallet += jackpot
-        console.log(`How does it feel to be a winner? Well now you know because the spin came up ${betOnNumber}`)
+function betNumber(bet) {
+    if (bet === spinTheWheel()[0]) {
+        if (bet === spinTheWheel()[0]) {
+            wallet += jackpot
+            console.log(`How does it feel to be a winner? Well now you know because the spin came up ${bet}`)
+        } else {
+            wallet -= priceToPlay
+            console.log(`How does it feel to be a loser? The spin unfortuanately was not ${bet}, but you might win back what you lost on the next spin!!!`)
+        }
     } else {
-        wallet -= priceToPlay
-        console.log(`How does it feel to be a loser? The spin unfortuanately was not ${betOnNumber}, but you might win back what you lost on the next spin!!!`)
+        break;
     }
 }
 
