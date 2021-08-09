@@ -81,6 +81,22 @@ function betNumber(bet) {
 }
 
 
+function betColorAndNumber(bet) {
+    if (bet === 'red' spinTheWheel()[0] | 'black' spinTheWheel()[0] {
+        if (bet === spinTheWheel()[0]) {
+            wallet += jackpot
+            console.log(`How does it feel to be a winner? Well now you know because the spin came up ${bet}`)
+        } else {
+            wallet -= priceToPlay
+            console.log(`How does it feel to be a loser? The spin unfortuanately was not ${bet}, but you might win back what you lost on the next spin!!!`)
+        }
+    } else {
+        break;
+    }
+}
+
+
+
 // make simple betting method for general red or black bet
 // make another simple bettting method to bet on single number results
 // make complex betting method to bet for groups of numbers
