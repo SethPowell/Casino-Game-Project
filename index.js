@@ -3,8 +3,8 @@ let wallet= 100
 priceToPlay= 10
 
 rouletteWheel = [
-    [0,'green']
-    [00,'green']
+    [0,'green'],
+    [00,'green'],
     [1,'red'],
     [2,'black'],
     [3,'red'],
