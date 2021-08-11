@@ -47,53 +47,56 @@ jackpot = (priceToPlay*(Math.random()*3).toPrecision(2))
 
 function spinTheWheel() {
     randomNum = (Math.floor(Math.random()*rouletteWheel.length))
+    console.log((rouletteWheel[randomNum])[0].toString())
     return (rouletteWheel[randomNum])
 }
 // create a loop so this runs until your wallet reaches 0 and you bust
-bet = prompt('What would you like to bet on?')
-if (bet === 'red' | 'black') {
-  console.log('color')
-  spinTheWheel();
-  betColor(bet);
-} else if (bet.includes('1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'0')) {
-  console.log('number')
-  spinTheWheel()
-  betNumber(bet)
-} 
-
+function playRoulette() {
+  if (wallet >= 10) {
+    bet = prompt('What would you like to bet on?')
+    console.log(bet)
+    if (isNaN(bet) === false) {
+      console.log('number')
+      spinTheWheel()
+      betNumber(bet)
+    } else if (bet.toString() === 'red' || 'black') {
+      console.log('color')
+      spinTheWheel();
+      betColor(bet);
+    }
+  } else {
+    console.log("Sorry you're too poor to play this game")
+  }
+}
 
 function betColor(bet) {
-    if (bet === 'red' | 'black') {
-        if (bet === 'red' | 'black') {
-            wallet += jackpot
-            console.log(`How does it feel to be a winner? Well now you know because the spin came up ${bet}`)
-            console.log(`You now have $${wallet} why not play again.`)
-            
-        } else {
-            wallet -= priceToPlay
-            console.log(`How does it feel to be a loser? The spin unfortuanately was not ${bet}, but you might win back what you lost on the next spin!!!`)
-            console.log(`You now have $${wallet} why not play again.`)
-            
-        }
-    } 
-    bet
+  if (bet === 'red' || 'black') {
+    if ((rouletteWheel[randomNum])[1] === bet) {
+        wallet += jackpot
+        console.log(`How does it feel to be a winner? Well now you know because the spin came up ${bet}`)
+        console.log(`You now have $${wallet.toPrecision(5)} why not play again.`)
+        playRoulette()
+    } else {
+        wallet -= priceToPlay
+        console.log(`How does it feel to be a loser? The spin unfortuanately was not ${bet}, but you might win back what you lost on the next spin!!!`)
+        console.log(`You now have $${wallet.toPrecision(5)} why not play again.`)
+        playRoulette()
+    }
+  } 
 }
 
 function betNumber(bet) {
-    if (bet === spinTheWheel()[0].toString()) {
-        if (bet === spinTheWheel()[0].toString()) {
-            wallet += jackpot
-            console.log(`How does it feel to be a winner? Well now you know because the spin came up ${bet}`)
-        } else {
-            wallet -= priceToPlay
-            console.log(`How does it feel to be a loser? The spin unfortuanately was not ${bet}, but you might win back what you lost on the next spin!!!`)
-        }
-    } 
+  if (bet.toString() === ((rouletteWheel[randomNum])[0]).toString()) {
+      wallet += jackpot
+      console.log(`How does it feel to be a winner? Well now you know because the spin came up ${bet}`)
+      console.log(`You now have $${wallet.toPrecision(5)} why not play again.`)
+      playRoulette()
+  } else {
+      wallet -= priceToPlay
+      console.log(`How does it feel to be a loser? The spin unfortuanately was not ${bet}, but you might win back what you lost on the next spin!!!`)
+      console.log(`You now have $${wallet.toPrecision(5)} why not play again.`)
+      playRoulette()
+  }
 }
 
-
-
-
-// make simple betting method for general red or black bet
-// make another simple bettting method to bet on single number results
-// make complex betting method to bet for groups of numbers
+playRoulette()
